@@ -261,8 +261,8 @@
     const data = await response.json();
 
       if (response.ok) {
-        alert("Success! Your message has been sent.");
-        form.reset();
+          alert("Success! Your message has been sent.");
+          form.reset();
         } else {
           alert("Error: " + data.message);
         }
