@@ -1,93 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign in — patrick simon</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    :root{
+      --bg:#0f172a;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#06b6d4;
+      --glass: rgba(255,255,255,0.03);
     }
-
-    .box {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 10px;
-      width: 300px;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: linear-gradient(180deg,var(--bg), #071028 80%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
     }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
+    .card{
+      width:100%;
+      max-width:420px;
+      background:linear-gradient(180deg,var(--card), rgba(11,18,32,0.72));
+      border-radius:12px;
+      padding:28px;
+      box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
     }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #38bdf8;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+    h1{margin:0 0 8px;font-size:1.35rem}
+    p.lead{margin:0 0 18px;color:var(--muted);font-size:0.98rem}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;justify-content:center;
+      width:100%;padding:12px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700;
     }
-
-    button:hover {
-      background: #0ea5e9;
+    .oauth{background:#111;color:#fff}
+    .oauth:hover{opacity:0.9}
+    .or{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--muted);font-size:0.9rem}
+    .or::before,.or::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.04)}
+    form{display:grid;gap:10px;margin-top:4px}
+    input[type=email],input[type=password]{
+      width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit;
     }
-
-    h2 {
-      text-align: center;
-    }
+    .primary{background:var(--accent);color:#042024;border:0}
+    .primary:hover{opacity:0.95}
+    .muted-small{color:var(--muted);font-size:0.9rem;margin-top:12px;text-align:center}
+    @media (max-width:420px){.card{margin:12px}}
   </style>
 </head>
-
 <body>
+  <main class="card" role="main">
+    <h1>Sign in</h1>
+    <p class="lead">Sign in with GitHub or use your admin email and password.</p>
 
-  <div class="box">
-    <h2>Admin Login</h2>
+    <button id="githubSignIn" class="btn oauth">Sign in with GitHub</button>
 
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
+    <div class="or">or</div>
 
-    <button id="loginBtn">Login</button>
-  </div>
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button id="loginBtn" type="submit" class="btn primary">Sign in</button>
+    </form>
 
+    <p class="muted-small">After signing in you'll be redirected to the admin dashboard.</p>
+  </main>
 
-
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Login</title>
-</head>
-
-<body>
-
-  <h2>Admin Login</h2>
-
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
-
-  <button id="loginBtn">Login</button>
-
-  <!-- EXTERNAL JS ONLY -->
-  <script type="module" src="./login.js"></script>
-
-</body>
-</html>
-
-  
-
+  <script type="module" src="js/login.js"></script>
 </body>
 </html>
